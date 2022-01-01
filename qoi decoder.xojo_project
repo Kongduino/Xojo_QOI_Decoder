@@ -12,6 +12,7 @@ RawData=dice;../../../../Development:C/qoi/qoi_test_images/dice.qoi;&h0000000036
 RawData=testcard_rgba;../../../../Development:C/qoi/qoi_test_images/testcard_rgba.qoi;&h0000000056934FFF;&h0000000000000000;false
 RawData=screen1;../../../../Development:C/qoi/screen1.qoi;&h0000000031B9FFFF;&h0000000000000000;false
 RawData=kodim23;../../../../Development:C/qoi/qoi_test_images/kodim23.qoi;&h0000000069CE87FF;&h0000000000000000;false
+RawData=PakOu;PakOu.qoi;&h000000005329D7FF;&h0000000000000000;false
 DefaultWindow=Window1
 AppMenuBar=MainMenuBar
 MajorVersion=1

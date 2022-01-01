@@ -36,10 +36,10 @@ Begin Window Window1
       Index           =   -2147483648
       InitialParent   =   ""
       Left            =   20
-      LockBottom      =   False
+      LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   True
-      LockRight       =   False
+      LockRight       =   True
       LockTop         =   True
       Scope           =   0
       TabIndex        =   0
@@ -90,6 +90,7 @@ End
 		  Dim t0, t1 As Double
 		  t0=System.Microseconds
 		  
+		  me.RunMode=Timer.RunModes.Off
 		  Select Case myIndex
 		  Case 0
 		    If Not doneWithPNG Then
@@ -121,16 +122,24 @@ End
 		    Else
 		      Canvas1.Backdrop = qoi.decode(dice)
 		    End If
+		  Case 5
+		    If Not doneWithPNG Then
+		      Canvas1.Backdrop = qoi.decode(PakOu, True, "/tmp/PakOu.png")
+		    Else
+		      Canvas1.Backdrop = qoi.decode(PakOu)
+		    End If
 		    doneWithPNG = True
 		  End Select
 		  
 		  t1=System.Microseconds
 		  
 		  myIndex = myIndex+1
-		  If myIndex=5 Then myIndex=0
+		  If myIndex=6 Then myIndex=0
 		  
 		  Canvas1.Refresh()
-		  Self.Title = Format(t1-t0, "###,###")+" µs"
+		  Self.Title = Str(Canvas1.Backdrop.Width)+"x"+Str(Canvas1.Backdrop.Height)+": "+Format(t1-t0, "###,###")+" µs"
+		  me.RunMode=Timer.RunModes.Multiple
+		  
 		End Sub
 	#tag EndEvent
 #tag EndEvents
