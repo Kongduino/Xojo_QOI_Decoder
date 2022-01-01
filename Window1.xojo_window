@@ -20,7 +20,7 @@ Begin Window Window1
    MinimumHeight   =   64
    MinimumWidth    =   64
    Resizeable      =   True
-   Title           =   "Untitled"
+   Title           =   "Oh Hai!"
    Type            =   "0"
    Visible         =   True
    Width           =   840
@@ -377,6 +377,14 @@ End
 		Group="Behavior"
 		InitialValue="0"
 		Type="Integer"
+		EditorType=""
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="doneWithPNG"
+		Visible=false
+		Group="Behavior"
+		InitialValue="False"
+		Type="Boolean"
 		EditorType=""
 	#tag EndViewProperty
 #tag EndViewBehavior
