@@ -23,3 +23,12 @@ This sample app implements `decode(mb As MemoryBlock)` and `decodeFile(fp As Str
 
 The newest version adds a higher-definition image, and saves the .qoi files as PNG in the `/tmp/` directory.
 
+```bash
+> ls -al /tmp/*.png
+-rw-r--r--  1 dda  wheel  2330306 Jan  1 14:45 /tmp/PakOu.png
+-rw-r--r--  1 dda  wheel   349827 Jan  1 14:45 /tmp/dice.png
+-rw-r--r--  1 dda  wheel   824064 Jan  1 14:45 /tmp/kodim23.png
+-rw-r--r--  1 dda  wheel    20210 Jan  1 14:44 /tmp/qoi_logo.png
+-rw-r--r--  1 dda  wheel   195553 Jan  1 14:45 /tmp/screen1.png
+-rw-r--r--  1 dda  wheel    18371 Jan  1 14:45 /tmp/testcard_rgba.png
+```
