@@ -30,6 +30,7 @@ Begin Window Window1
       AllowFocusRing  =   True
       AllowTabs       =   False
       Backdrop        =   0
+      DoubleBuffer    =   False
       Enabled         =   True
       Height          =   600
       Index           =   -2147483648
@@ -65,9 +66,16 @@ End
 	#tag Event
 		Sub Open()
 		  
+		  
+		  
+		  
 		End Sub
 	#tag EndEvent
 
+
+	#tag Property, Flags = &h0
+		doneWithPNG As Boolean = False
+	#tag EndProperty
 
 	#tag Property, Flags = &h0
 		myIndex As Integer = 0
@@ -84,15 +92,36 @@ End
 		  
 		  Select Case myIndex
 		  Case 0
-		    Canvas1.Backdrop = qoi.decode(qoi_logo)
+		    If Not doneWithPNG Then
+		      Canvas1.Backdrop = qoi.decode(qoi_logo, True, "/tmp/qoi_logo.png")
+		    Else
+		      Canvas1.Backdrop = qoi.decode(qoi_logo)
+		    End If
 		  Case 1
-		    Canvas1.Backdrop = qoi.decode(screen1)
+		    If Not doneWithPNG Then
+		      Canvas1.Backdrop = qoi.decode(screen1, True, "/tmp/screen1.png")
+		    Else
+		      Canvas1.Backdrop = qoi.decode(screen1)
+		    End If
 		  Case 2
-		    Canvas1.Backdrop = qoi.decode(testcard_rgba)
+		    If Not doneWithPNG Then
+		      Canvas1.Backdrop = qoi.decode(testcard_rgba, True, "/tmp/testcard_rgba.png")
+		    Else
+		      Canvas1.Backdrop = qoi.decode(testcard_rgba)
+		    End If
 		  Case 3
-		    Canvas1.Backdrop = qoi.decode(kodim23)
+		    If Not doneWithPNG Then
+		      Canvas1.Backdrop = qoi.decode(kodim23, True, "/tmp/kodim23.png")
+		    Else
+		      Canvas1.Backdrop = qoi.decode(kodim23)
+		    End If
 		  Case 4
-		    Canvas1.Backdrop = qoi.decode(dice)
+		    If Not doneWithPNG Then
+		      Canvas1.Backdrop = qoi.decode(dice, True, "/tmp/dice.png")
+		    Else
+		      Canvas1.Backdrop = qoi.decode(dice)
+		    End If
+		    doneWithPNG = True
 		  End Select
 		  
 		  t1=System.Microseconds
@@ -340,6 +369,14 @@ End
 		Group="Deprecated"
 		InitialValue="True"
 		Type="Boolean"
+		EditorType=""
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="myIndex"
+		Visible=false
+		Group="Behavior"
+		InitialValue="0"
+		Type="Integer"
 		EditorType=""
 	#tag EndViewProperty
 #tag EndViewBehavior

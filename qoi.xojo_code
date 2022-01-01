@@ -1,9 +1,13 @@
 #tag Module
 Protected Module qoi
 	#tag Method, Flags = &h0
-		Function decode(mb As MemoryBlock) As Picture
+		Function decode(mb As MemoryBlock, saveAsPNG As Boolean = False, fp As String = "") As Picture
 		  Declare Function qoi_decode Lib qoiLib (data As Ptr, size As Integer, qoi_desc As Ptr, channels As Integer) As Ptr
 		  // void *qoi_decode(const void *data, int size, qoi_desc *desc, int channels)
+		  
+		  Declare Function stbi_write_png Lib qoiLib (argv As Ptr, width As Integer, height As Integer, _
+		  channels As Integer, pixels As Ptr, colorspace As Integer) As Integer
+		  // int stbi_write_png(char const *filename, int x, int y, int comp, const void  *data, int stride_in_bytes);
 		  
 		  Dim desc, pixels As MemoryBlock
 		  desc = New MemoryBlock(14)
@@ -35,6 +39,13 @@ Protected Module qoi
 		      rs.Pixel(x, y) = c
 		    Next
 		  Next
+		  
+		  If saveAsPNG Then
+		    Dim fpMB As MemoryBlock
+		    fpMB=New MemoryBlock(fp.Length+1)
+		    fpMB.CString(0)=fp
+		    ix = stbi_write_png(fpMB, w, h, channels, pixels, 0)
+		  End If
 		  
 		  Return p
 		End Function
