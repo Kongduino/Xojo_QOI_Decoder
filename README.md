@@ -10,3 +10,5 @@ gcc -dynamiclib -flat_namespace qoiconv.o -o qoi.dylib
 This sample app implements `decode(mb As MemoryBlock)` and `decodeFile(fp As String)`. The app itself cycles between 5 .qoi images, displaying the time it took to decode them, and convert them to a Xojo `Picture` object.
 
 ![demo](qoi.gif)
+
+The newest version adds a higher-definition image, and saves the .qoi files as PNG in the `/tmp/` directory.
